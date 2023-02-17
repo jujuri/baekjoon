@@ -1,0 +1,15 @@
+import sys
+
+n,m = map(int, sys.stdin.readline().split())
+n_list = list(map(int, sys.stdin.readline().split()))
+sum_list = [0]
+temp = 0
+
+for k in range(n):
+    temp += n_list[k]
+    sum_list.append(temp)
+    
+for _ in range(m):
+    i, j = map(int, sys.stdin.readline().split())
+    mul = sum_list[j]-sum_list[i-1]
+    print(mul)
