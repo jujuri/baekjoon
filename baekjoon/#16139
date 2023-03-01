@@ -1,0 +1,25 @@
+import sys
+
+input = sys.stdin.readline
+
+S = list(input())
+big_list = []
+
+for i in range(26):
+    cnt = 0
+    small_list =[0]
+    character = chr(ord('a')+i)
+    for j in S:
+        if j == character:
+            cnt += 1
+        small_list.append(cnt)
+    big_list.append(small_list)
+
+q = int(input())
+
+for i in range(q):
+    alphabet, l, r = input().split()
+    l, r = int(l), int(r)
+    num = ord(alphabet)-ord('a')
+    result = big_list[num][r+1] - big_list[num][l]
+    print(result)
