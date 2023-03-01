@@ -1,0 +1,18 @@
+import sys
+
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+nlist = list(map(int, input().split()))
+sum_list = [0 for _ in range(m)]
+cnt = 0
+
+for i in range(n):
+    cnt += nlist[i]
+    sum_list[cnt%m] += 1
+
+result = 0
+
+for i in sum_list:
+    result += i*(i-1)//2     -> 이 부분이 어렵게 느껴졌음
+print(result+sum_list[0]) 
