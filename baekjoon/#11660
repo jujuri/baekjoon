@@ -1,0 +1,30 @@
+import sys
+
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+nlist = []
+
+for _ in range(n):
+    tmp_list = list(map(int, input().split()))
+    nlist.append(tmp_list) 
+
+
+
+sumlist = [[0 for _ in range(n+1)] for _ in range(n+1)]
+
+sumlist[1][1] = nlist[0][0]
+for i in range(2, n+1):
+    sumlist[1][i] = sumlist[1][i-1] + nlist[0][i-1]
+for i in range(2, n+1):
+    sumlist[i][1] = sumlist[i-1][1] + nlist[i-1][0]
+for i in range(2, n+1):
+    for j in range(2, n+1):
+        sumlist[i][j] = sumlist[i-1][j] + sumlist[i][j-1] - sumlist[i-1][j-1] + nlist[i-1][j-1]
+
+        
+result = 0
+for i in range(m):
+    x1, y1, x2, y2 = map(int, input().split())
+    result = sumlist[x2][y2] - sumlist[x2][y1-1] - sumlist[x1-1][y2] + sumlist[x1-1][y1-1]
+    print(result)
