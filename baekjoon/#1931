@@ -1,0 +1,20 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+meeting_list = []
+
+for _ in range(n):
+    a, b = map(int, input().split())
+    meeting_list.append((a, b))
+
+meeting_list = sorted(meeting_list, key = lambda x: (x[1], x[0]))
+
+prev = meeting_list[0][1]
+cnt = 1
+
+for i in meeting_list[1:]:
+    if i[0] >= prev:
+        cnt += 1
+        prev = i[1]
+print(cnt)
