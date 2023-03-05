@@ -1,0 +1,11 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+nlist = list(map(int, input().split()))
+nlist = sorted(nlist)
+
+sum = 0
+for i in range(n):
+    sum += nlist[i] * (n-i)
+print(sum) 
