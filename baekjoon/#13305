@@ -1,0 +1,17 @@
+import sys 
+input = sys.stdin.readline
+
+n = int(input())
+
+distance = list(map(int, input().split()))
+price = list(map(int, input().split()))
+
+cnt = price[0] * distance[0]
+minimum = price[0]
+
+for i in range(1, n-1):
+    if minimum > price[i]:
+        minimum = price[i]
+    cnt += minimum * distance[i]
+print(cnt)        
+        
