@@ -1,0 +1,39 @@
+import sys
+input = sys.stdin.readline
+
+
+s = input().strip()
+n = len(s)
+cnum = int(input())
+index = n
+left_stack = list(s)
+right_stack= []
+
+
+for i in range(cnum):
+    command = input().strip()
+    if command[0] == 'L':
+        if index == 0:
+            pass
+        else:
+            index -= 1
+            right_stack.append(left_stack.pop())
+    elif command[0] == 'B':
+        if index == 0:
+            pass
+        else:
+            left_stack.pop()
+            index -= 1
+    elif command[0] == 'D':
+        if len(right_stack) == 0:
+            pass
+        else:
+            index += 1
+            left_stack.append(right_stack.pop())
+    else:
+        left_stack.append(command[2])
+        index += 1
+        
+right_stack.reverse()
+stack = left_stack + right_stack
+print(''.join(stack))
