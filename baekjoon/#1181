@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+
+set = set()
+
+for _ in range(n):
+    set.add(input().strip())
+
+arr = list(set)
+
+arr.sort()
+arr.sort(key=len)
+
+for i in arr:
+    print(i)
