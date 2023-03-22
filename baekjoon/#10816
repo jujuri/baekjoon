@@ -1,0 +1,28 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+nlist  = list(map(int, input().split()))
+
+m = int(input())
+mlist = list(map(int, input().split()))
+
+pluslist=[0 for _ in range(10000001)]
+minuslist = [0 for _ in range(10000001)]
+
+for i in nlist:
+    if i >= 0:
+        pluslist[i] += 1
+    else:
+        i = i * -1
+        minuslist[i] += 1
+arr = []
+for i in mlist:
+    if i >= 0:
+        arr.append(pluslist[i])
+    else:
+        i = i * -1
+        arr.append(minuslist[i])
+
+for i in arr:
+    print(i, end = " ")
