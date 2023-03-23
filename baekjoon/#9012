@@ -16,8 +16,36 @@ for i in range(t):
             else:
                 extra.append(j)
 
-    if len(stack) > 0 or len(extra) > 0:
+    if len(stack) > 0 or len(extra) > 0: //여기서 if 대신 else를 사용하면 여분의 리스트 extra없이 문제 해결이 가능하다.
         print("NO")
 
     else:
         print("YES")
+
+-----------------------------------------------------
+-> 수정 후 코드
+
+import sys 
+input = sys.stdin.readline
+
+t = int(input())
+
+for i in range(t):
+    stack = []
+    ps = input().strip()
+    for j in ps:
+        if j == '(':
+            stack.append(j)
+        else:
+            if len(stack) > 0:
+                stack.pop()
+            else:
+                print("NO")
+                break
+
+    else:
+        if len(stack) > 0:
+            print("NO")
+
+        else:
+            print("YES")
