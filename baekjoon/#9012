@@ -1,0 +1,23 @@
+import sys 
+input = sys.stdin.readline
+
+t = int(input())
+
+for i in range(t):
+    stack = []
+    extra = []
+    ps = input().strip()
+    for j in ps:
+        if j == '(':
+            stack.append(j)
+        else:
+            if len(stack) > 0:
+                stack.pop()
+            else:
+                extra.append(j)
+
+    if len(stack) > 0 or len(extra) > 0:
+        print("NO")
+
+    else:
+        print("YES")
