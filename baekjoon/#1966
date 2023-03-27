@@ -1,0 +1,24 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for i in range(t):
+    n,m = map(int, input().split())
+    numlist = list(map(int, input().split()))
+    TF = ['F']*n
+    TF[m]='T'
+    cnt = 0
+    while True:
+        if 'T' not in TF:
+            break
+        else:
+            if max(numlist) == numlist[0]:
+                cnt += 1
+                numlist.pop(0)
+                TF.pop(0)
+            else:
+                check = numlist.pop(0)
+                numlist.append(check)
+                check2 = TF.pop(0)
+                TF.append(check2)
+    print(cnt)
