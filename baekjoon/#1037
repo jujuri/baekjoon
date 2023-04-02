@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+
+result = 0
+if n == 1:
+    inp = int(input())
+    result = inp * inp
+
+    else:
+    alist = list(map(int, input().split()))
+    minimum =min(alist)
+    maximum = max(alist)
+    result = minimum * maximum
+
+print(result)
