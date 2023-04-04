@@ -1,0 +1,13 @@
+import sys
+input = sys.stdin.readline
+
+m,n=map(int,input().split())
+
+for i in range(m,n+1):
+    if i == 1: #i가 1인 경우 소수가 아니기 때문에 continue 아래 코드를 전부 건너 뜀
+        continue
+    for j in range(2,int(i**0.5)+1): #에라토스테네스의 체에서 p배수에서 p의 제곱의 최대값보다 작거나 같을 때 까지만 유효한 원리가 적용된 부분.
+        if i % j == 0:
+            break   
+    else:
+        print(i)
