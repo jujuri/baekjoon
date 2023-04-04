@@ -1,0 +1,49 @@
+import sys
+input = sys.stdin.readline
+
+a, b = map(int, input().split())
+alist = [1, a]
+blist = [1, b]
+
+//아래 코드는 약수를 구하는 과정
+i = 2
+while i <= a:
+    if a % i == 0:
+        alist.append(i)
+        alist.append(a//i)
+    else:
+        pass
+    i += 1
+j = 2
+while j <= b:
+    if b % j == 0:
+        blist.append(j)
+        blist.append(b//j)
+    else:
+        pass
+    j += 1
+
+//약수를 가지고 있는 두 리스트 중 더 긴 리스트를 판별하는 과정
+longer_list = []
+shorter_list = []
+if  len(alist) >= len(blist): 
+    longer_list = alist
+    shorter_list = blist
+else:
+    longer_list = blist
+    shorter_list = alist
+
+//두 약수리스트를 비교하며 새로운 리스트에 공약수만 추가하는 과정 
+check_list = []
+for i in (shorter_list):
+    if i in longer_list:
+        check_list.append(i)
+        
+maximum = max(check_list) 
+print(maximum)
+
+divison_a = a // maximum
+division_b = b // maximum
+division = divison_a * division_b
+
+print(division * maximum)
