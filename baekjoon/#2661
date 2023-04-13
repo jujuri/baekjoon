@@ -1,0 +1,29 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+
+string = ''
+
+def check(s):
+    l = len(s)
+    for i in range(l-1, l//2-1, -1):
+        arr1 = s[i:] 
+        arr2 = s[i-len(arr1):i]
+        if arr1 == arr2:
+            return False
+    return True
+
+def dfs(depth):
+    global string
+    numlist = ['1', '2', '3']
+    
+    if len(string) == depth:
+        print(string)
+        exit(0)
+    for i in numlist:
+        if check(string+i):
+            string += i
+            dfs(depth)
+            string  = string[:-1] //이 부분 이해하는데 한참 걸렸음
+dfs(n)
