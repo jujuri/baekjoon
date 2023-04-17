@@ -1,0 +1,16 @@
+import sys
+from itertools import combinations
+
+l, c = map(int, input().split())
+str_list = list(map(str, input().split()))
+str_list.sort()
+
+vowel_list = ['a', 'e', 'i', 'o', 'u']
+
+for i in combinations(str_list, l):
+    cnt = 0
+    for j in vowel_list:
+        if j in i:
+            cnt += 1
+    if cnt >= 1 and l-cnt >= 2:
+        print("".join(list(i)))
