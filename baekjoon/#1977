@@ -1,0 +1,23 @@
+import sys 
+input = sys.stdin.readline
+
+m = int(input())
+n = int(input())
+isSquare_num = [False] * 10201
+
+for i in range(1, 101):
+    isSquare_num[i*i] = True
+
+summary = 0
+minimum = 10000
+for i in range(m, n+1):
+    if isSquare_num[i] ==  True:
+        summary += i
+        if i < minimum:
+            minimum = i
+            
+if summary == 0:
+    print(-1)
+else:
+    print(summary)
+    print(minimum)
