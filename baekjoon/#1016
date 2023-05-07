@@ -1,0 +1,59 @@
+//Java code
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long a = sc.nextLong(), b = sc.nextLong();
+        long ba = b - a;
+        int tmp = (int)ba + 1;
+        Integer[] arr = new Integer[tmp];
+        Arrays.fill(arr, 1);
+        int new_b = (int)Math.sqrt(b);
+        
+        for (int i=2; i <= new_b; i++) {
+        	
+            long n = (long)Math.pow(i, 2);
+            long c = (a % n);
+            
+            if (c!=0) {
+                c = n - c;
+            }
+            
+            while (c < arr.length) {
+            	
+                arr[(int)(c)] = 0;
+                c += n;
+            }
+            
+        }
+        
+        int sum = 0;
+        for (int i=0; i< arr.length; i++) {
+            if (arr[i] == 1) {
+                sum += 1;
+            }
+            
+        }
+        System.out.print(sum);
+    }
+}
+
+//Python code
+import sys
+input = sys.stdin.readline
+
+a,b = map(int, input().split())
+
+track = [1 for i in range(b-a+1)]
+
+for i in range(2, int(b**0.5)+1):
+    c = a % i**2
+    if c != 0:
+        c = i**2 - c
+    while c < len(track):
+        track[c] = 0
+        c += i**2
+        
+print(sum(track))
