@@ -1,0 +1,18 @@
+import sys
+import heapq
+input = sys.stdin.readline
+
+n = int(input())
+left_heap = []
+right_heap = []
+for i in range(n):
+    x = int(input())
+    if len(left_heap) == len(right_heap):
+        heapq.heappush(left_heap, -x)
+    else:
+        heapq.heappush(right_heap, x)
+    if len(right_heap) != 0:
+        if -left_heap[0] > right_heap[0]:
+            heapq.heappush(left_heap, -heapq.heappop(right_heap))
+            heapq.heappush(right_heap, -heapq.heappop(left_heap))
+    print(-left_heap[0])
